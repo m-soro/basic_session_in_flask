@@ -4,6 +4,9 @@ from flask import Flask, session
 # identification data to a web server aka session ID...
 # these two piece of data are stored in a dictionary called session.
 
+from checker import check_logged_in
+# module that we created with the checked_logged_in decorator
+
 app =  Flask(__name__)
 # create a new flask web app.
 
@@ -26,28 +29,23 @@ def do_logout():
     return 'You are now logged OUT'
     # return a message to confirm we're logged OUT.
 
-@app.route('/status')
-def check_status():
-    # if session['logged_in']: -> do not use. susceptiple to key error..
-    if 'logged_in' in session: # this way of checking prevents the code from crashing!
-        return 'You are currently logged in'
-    return 'You are currently logged out'
-    # return message to confirm status.
-
 @app.route('/')
 def hello():
   return """Hello from Flask! Here we are testing the logging in
             and logging out functionality using Flask's session!"""
 
 @app.route('/page11')
+@check_logged_in # check if user is logged in using our created checker module
 def page11():
   return 'This is page11!'
 
 @app.route('/page12')
+@check_logged_in # check if user is logged in using our created checker module
 def page12():
   return 'This is page12!'
 
 @app.route('/page13')
+@check_logged_in # check if user is logged in using our created checker module
 def page13():
   return 'This is page13!'
 
