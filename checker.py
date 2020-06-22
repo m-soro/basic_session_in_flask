@@ -20,4 +20,4 @@ def check_logged_in(func):
             # the decorated func should have the same...
             # any number and any type of arguments, use " *args, **kwargs " to do this.
         return 'You are NOT logged in'
-return wrapper # return the nested function as function object.
+    return wrapper # return the nested function as function object.
