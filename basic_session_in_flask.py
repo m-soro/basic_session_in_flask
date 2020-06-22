@@ -30,24 +30,25 @@ def do_logout():
     # return a message to confirm we're logged OUT.
 
 @app.route('/')
-def hello():
+def hello(): # Let's set a welcome message to our homepage!
   return """Hello from Flask! Here we are testing the logging in
-            and logging out functionality using Flask's session!"""
+            and logging out and user restriction functionality
+            using Flask's session!"""
 
 @app.route('/page11')
 @check_logged_in # check if user is logged in using our created checker module
 def page11():
-  return 'This is page11!'
+  return 'You are viewing page11!'
 
 @app.route('/page12')
 @check_logged_in # check if user is logged in using our created checker module
 def page12():
-  return 'This is page12!'
+  return 'You are viewing page12!'
 
 @app.route('/page13')
 @check_logged_in # check if user is logged in using our created checker module
 def page13():
-  return 'This is page13!'
+  return 'You are viewing page13!'
 
 if __name__ == '__main__':
     app.run(debug=True)
